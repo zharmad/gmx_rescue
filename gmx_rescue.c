@@ -5,10 +5,11 @@
     origin               : from postings on Gromacs Mailing list by
                            Bert de Groot and Peter Tieleman
     modifications        : (C) 2003 by Marc Baaden
-    email                : baaden@smplinux.de
+                           (C) 2021 by Po-chia Chen
+    email                : chen.buo.jia@gmail.com
  ***************************************************************************/
 /*
- * $Id: gmx_rescue.c,v 1.4 2003/08/29 14:45:22 marc Exp $
+ * gmx_rescue.c,v 2.0 2021/09/14 16:40:00 by zharmad
  *
  *                This source code is part of
  *
