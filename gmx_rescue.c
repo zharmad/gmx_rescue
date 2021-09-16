@@ -227,9 +227,11 @@ void read_frame_into_buffer(FILE *fp, struct frameBuffer* pFrame, bool bReverse,
         if ( a == pFrame->magic ) {
             // Then check for the rest of the header.
             h = read_header( fp, bReverse ) ;
+            // Reset after reading header, in case random 1995 appears.
+            fseek(fp, -3*VAR_SIZE, SEEK_CUR);
             if ( h.nAtoms == pFrame->nAtoms ) {
-                // Reset to magic number position after reading headfer.
-                fseek(fp, -4*VAR_SIZE, SEEK_CUR);
+                // REset to magic number position
+                fseek(fp, -1*VAR_SIZE, SEEK_CUR);
                 break;
             } 
         }
@@ -430,7 +432,7 @@ int main(int argc,  char *argv[]) {
                 ++iDelFrame;
             } else {
                 printf("...writing frame %d\n", i);
-                fwrite( frame.buffer, 1, frame.size*VAR_SIZE, fpOut) ;
+                fwrite( frame.buffer, VAR_SIZE, frame.size, fpOut) ;
             }
             read_frame_into_buffer(fp, &frame, bReverse, false);
             //debug_frameBuffer(&frame);
